@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>List</title>
+	<script type="text/javascript">
+		function CheckSelect() {
+			var ctrlSelect = document.getElementById("profile");
+			var definition = ""
+			var selectedIndex = ctrlSelect.selectedIndex;
+			if(selectedIndex == 0) {
+				alert("Retry!");
+				ctrlSelect.focus();
+			} else if (selectedIndex == 1) {
+				definition = "자바스크립트는 '웹페이지에 생동감을 불어넣기 위해' 만들어진 프로그래밍 언어이다. "
+					+ "자바스크립트로 작성한 프로그램을 스크립트(script)라고 부른다. "
+					+ "스크립트는 웹페이지의 HTML 안에 작성할 수 있는데, 웹페이지를 불러올 때 스크립트가 자동으로 실행된다. "
+					+ "스크립트는 특별한 준비나 컴파일 없이 보통의 문자 형태로 작성할 수 있고, 실행도 할 수 있다. "
+					+ "이런 관점에서 보면 자바스크립트는 자바와는 매우 다른 언어라고 할 수 있다. "
+					+ "자바스크립트는 브라우저뿐만 아니라 서버에서도 실행할 수도 있다. "
+					+ "이 외에도 JavaScript engine 이라는 불리는 특별한 프로그램이 들어 있는 모든 디바이스에서도 동작한다.";
+			} else if (selectedIndex == 2) {
+				definition = "Java Server Pages의 약자로 Java 언어를 기반으로 하는 Server Side Script 언어이다. " 
+					+ "HTML 코드에 Java 코드를 넣어 동적 웹페이지를 생성하는 웹 어플리케이션 도구이다. 
+					+ "JSP가 실행되면 Java Servlet으로 변환되며 WAS에서 동작되면서 필요한 기능을 수행하고 생성된 데이터를 웹 페이지와 함께 클라이언트로 응답한다.";
+			} else if (selectedIndex == 3) {
+				definition = "Node.js는 확장성 있는 네트워크 어플리케이션(특히, 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다. "
+					+ "작성언어로 Javascript르를 활용하며 Non-blocking I/O와 Single thread event loop를 통한 높은 처리 성능을 가지고 있다. "
+					+ "내장 HTTP 서버 라이브러리를 포함하고 있어 웹 서버에서 아파치 등의 별도의 소프트웨어 없이 동작하는 것이 가능하며 이를 통해 웹 서버의 동작에 있어 더 많은 통제를 가능케 한다.";
+			} else if (selectedIndex == 4) {
+				definition = "클라이언트 측 HTML 스크립팅을 간소화하기 위해 고안된 cross platform Javascript library이다. "
+					+ "오늘날 가장 인기 있는 Javascript 라이브러리이다. "
+					+ "MIT 라이선스로 배포되는 무료 오픈 소스 소프트 웨어이다. "
+					+ "빠르고, 작고, 기능이 풍부한 점을 장점으로, jQuery는 여러 브라우저에서 동작가능하고 사용하기 쉬운 API를 통해 
+					+ "HTML 문서 탐색과 조작, 이벤트 처리, 애니메이션, Ajax 등을 훨씬 더 간단하게 만들어 준다.";
+			} else {
+				definition = "none";
+			}
+			window.alert(definition);
+		}
+	</script>
+</head>
+<body>
+	Definition<br/>
+	<select id="profile">
+		<option value="">Please Select!</option>
+		<option value="Javascript란?">Javascript란?</option>
+		<option value="Jsp란?">Jsp란?</option>
+		<option value="Node.js란?">Node.js란?</option>
+		<option value="jQuery란?">jQuery란?</option>
+	</select>
+	
+	<input type="button" value="확인" onclick="CheckSelect();"/>
+</body> 
+</html>
