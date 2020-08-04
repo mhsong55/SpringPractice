@@ -6,7 +6,7 @@ import com.kopo.dto.MemberVO;
 
 public interface MemberService {
 	
-	// public List<MemberVO> selectMember() throws Exception;
+	public boolean isDuplicatedID(String id) throws Exception;
 	
 	public int insertMember(MemberVO member) throws Exception;
 }

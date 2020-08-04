@@ -6,7 +6,10 @@
 <mapper namespace="com.kopo.mapper.memberMapper">
 
 	<insert id="insert">
-		INSERT INTO test1 VALUES (#{_id}, #{_pw}, #{_name}, #{_email}, #{_phone})
+		INSERT INTO test1 VALUES (#{id}, #{pw}, #{name}, #{email}, #{phone})
 	</insert>
 	
+	<select id="selectCountById" resultType="Integer">
+		SELECT COUNT(id) FROM test1 WHERE id = #{id}
+	</select>
 </mapper>

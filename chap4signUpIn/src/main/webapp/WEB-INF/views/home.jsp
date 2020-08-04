@@ -12,23 +12,16 @@
 	<p>
 	<form method="post" action="memberList">
 		<!-- <form method = "post" action = "openPopup()"> -->
+		아래 항목은 모두 필수 입력 항목 입니다.<br>
 		<table border="1">
 			<tr>
-				<tr><td>ID</td><td><input type="text" name="id" id="id"></td></tr>
-				<tr><td>Password</td><td><input type="text" name="pw" id="pw"></td></tr>
-				<tr><td>Name</td><td><input type="text" name="name" id="name"></td></tr>
-				<tr><td>E-mail</td><td><input type="text" name="email" id="eamil"></td></tr>
-				<tr><td>Phone Number</td><td><input type="text" name="phone" id="phone"></td></tr>
+				<tr><td width="120px">ID</td><td><input type="text" name="id" id="id" required></td></tr>
+				<tr><td width="120px">Password</td><td><input type="password" name="pw" id="pw" required></td></tr>
+				<tr><td width="120px">Name</td><td><input type="text" name="name" id="name" required></td></tr>
+				<tr><td width="120px">E-mail</td><td><input type="email" name="email" id="eamil" required></td></tr>
+				<tr><td width="120px">Phone Number</td><td><input type="number" name="phone" size="11" id="phone" required></td></tr>
 		</table>
+		<span style="display:inline-block; width:200px"></span><input type = "submit" value = "Sign On">
 	</form>
-	<!--
-	<P>
-	<form action="insert.do" method="post">
-		<span style="display:inline-block; width:75px">ID : </span><input type = "text" name = "id" width = 250><br>
-		<span style="display:inline-block; width:75px">PW : </span><input type = "password" name = "pw" width = 250><br>
-		<span style="display:inline-block; width:75px">NAME : </span><input type = "text" name = "name" width = 250><br>
-		<span style="display:inline-block; width:150px"></span><input type = "submit" value = "Sign On">
-	</form>
-	-->
 </body>
 </html>

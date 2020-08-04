@@ -8,10 +8,6 @@
 <title>Insert result</title>
 </head>
 <body>
-	
-	<script type="text/javascript">
-		window.alert("${result}");
-		location.href = "/chap4Controller/";
-	</script>
+	<h3>회원 가입 실패</h3>
 </body>
 </html>
