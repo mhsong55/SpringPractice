@@ -19,7 +19,7 @@
 				// set attribute (form)
 				newForm.name = 'messenger'
 				newForm.method = 'post';
-				newForm.target = '_blank';
+				newForm.target = '_self';
 				newForm.action = 'logon.do'
 				
 				// create element (input)

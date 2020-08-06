@@ -68,7 +68,7 @@ public class HomeController {
 		return "signup";
 	}
 	
-	// enroll DB by insert Query
+	// enroll to DB by insert Query
 	@RequestMapping(value = "/memberList", method = RequestMethod.POST)
 	public String insert(HttpServletRequest request) {
 
@@ -118,14 +118,13 @@ public class HomeController {
 		JSONParser jsonParser = new JSONParser();
 		
 		try {
-			// JSON 데이터를 넣어 JSON Object로 만들어준다.
+			// Convert JSON data into JSONObject.
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(getUserInfo);
 			member.setId(jsonObject.get("id").toString());
 			member.setName(jsonObject.get("name").toString());
 			member.setEmail(jsonObject.get("email").toString());
 			member.setPhone(jsonObject.get("phone").toString());
 		} catch (org.json.simple.parser.ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		request.setAttribute("user", member);

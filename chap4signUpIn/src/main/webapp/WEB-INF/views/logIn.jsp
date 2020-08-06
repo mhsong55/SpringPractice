@@ -299,8 +299,6 @@
 								$("#" + str).attr("placeholder"));
 						$("#" + str).focus();
 						return false;
-					} else {
-						return true;
 					}
 				}
 			});
