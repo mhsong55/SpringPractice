@@ -12,4 +12,12 @@
 	<select id = "selectCountById" resultType = "Integer">
 		SELECT  COUNT(id) FROM test1 WHERE id = BINARY(#{id})
 	</select>
+	
+	<select id = "selectCountByIdAndPw" resultType = "Integer">
+		SELECT COUNT(id) FROM test1 WHERE id = BINARY(#{id}) AND pw = BINARY(#{pw})
+	</select>
+	
+	<select id = "selectUserInform" resultType = "memberVO">
+		SELECT id, name, email, phone FROM test1 WHERE id = BINARY(#{id})
+	</select>
 </mapper>

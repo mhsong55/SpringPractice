@@ -298,7 +298,9 @@
 						alert("PLEASE INPUT " +
 								$("#" + str).attr("placeholder"));
 						$("#" + str).focus();
-						return;
+						return false;
+					} else {
+						return true;
 					}
 				}
 			});
@@ -317,7 +319,7 @@
       </svg>      
     </div>
     <form action="login.do" class="log-in" autocomplete="off" method="POST"> 
-      <h4>We are <span>KOPOSW</span></h4>
+      <h4>We are<br><span>KOPOSW</span><br>PEOPLE</h4>
       <p>어서오셔요~♥<br>
               불쌍한 금요일..<br>
               주말에도 달리셔요~!!
@@ -336,7 +338,6 @@
             </g>
             <rect class="st0" width="100" height="100"/>
           </svg>
-
         </div>
       </div>
       <div class="floating-label">
@@ -344,7 +345,7 @@
         <label for="password">Password:</label>
         <div class="icon">
           <?xml version="1.0" encoding="UTF-8"?>
-          <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve"              xmlns="http://www.w3.org/2000/svg">
+          <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
             <style type="text/css">
               .st0{fill:none;}
               .st1{fill:#010101;}
@@ -357,7 +358,7 @@
         </div>
       </div>
       <button type="submit" id="login_process">Log in</button>
-      <a href="#" class="discrete">Sign Up</a>
+      <a href="signup" class="discrete">Sign Up</a>
     </form>
   </div>
 </body>

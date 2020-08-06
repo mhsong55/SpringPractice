@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<!-- insertResult.jsp -->
+<!-- login_Result.jsp -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@
 	<title>Insert result</title>
 	<script type="text/javascript">
 		function resultPopup() {
-			
 			// if DB registration is successful
 			if ("${result}" == "success") {
 				window.alert("${member.name} 님의 회원 가입이 완료되었습니다.\n"

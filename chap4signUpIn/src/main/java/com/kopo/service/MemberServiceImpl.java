@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 import com.kopo.dao.MemberDAO;
 import com.kopo.dto.MemberVO;
@@ -34,9 +36,8 @@ public class MemberServiceImpl implements MemberService {
 		int selectCountById = dao.selectCountById(id);
 		if (selectCountById > 0) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false;
 	}
 	
 	/* Method to encrypt password
@@ -56,4 +57,57 @@ public class MemberServiceImpl implements MemberService {
 		messageDigest.update(target.getBytes());
 		return String.format("%064x", new BigInteger(1, messageDigest.digest()));
 	}
+
+	/* Convert data received by HTTP to MemberVO instance */
+	@Override
+	public MemberVO requestToMember(HttpServletRequest request) {
+		// get parameter form HTTP requests
+		String id = (String) request.getParameter("id");
+		String pw = (String) request.getParameter("pw");
+		String name = (String) request.getParameter("name");
+		String email = (String) request.getParameter("email");
+		
+		String phone1 = (String) request.getParameter("phone1");
+		String phone2 = (String) request.getParameter("phone2");
+		String phone3 = (String) request.getParameter("phone3");
+
+		String phone = "error";
+		StringBuffer stringBuffer = new StringBuffer();
+		
+		/* Since the phone number is divided into three, 
+		 * all three input values are added together to make one number */
+		if(phone1.length() <= 4 && phone2.length() <= 4 && phone2.length() <= 4) {
+			phone = stringBuffer.append(phone1)
+			    				.append(phone2)
+								.append(phone3)
+								.toString();
+		}		
+		
+		MemberVO member = new MemberVO();
+		member.setId(id);
+		member.setPw(pw);
+		member.setName(name);
+		member.setEmail(email);
+		member.setPhone(phone);
+		
+		return member;
+	}
+
+
+	@Override
+	public boolean isMatchedIdAndPw(MemberVO member) throws Exception {
+		int selectCountByIdAndPw = dao.selectCountByIdAndPw(member);
+		if(selectCountByIdAndPw > 0) {
+			return true;
+		}
+		
+		return false;
+	}
+
+
+	@Override
+	public MemberVO getUserInform(String id) throws Exception {
+		return dao.selectUserInform(id);
+	}
+	
 }
