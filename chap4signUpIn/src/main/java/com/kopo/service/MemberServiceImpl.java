@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 	
-	/* Method to encrypt password
+	/* Method to encode password
 	 * @param: (String) password
 	 * @return: (String) Encrypted password
 	 * */
@@ -93,7 +93,11 @@ public class MemberServiceImpl implements MemberService {
 		return member;
 	}
 
-
+	/* Search ID and password in DB
+	 * @param: (MemberVO) member
+	 * @return: (boolean) true if count number > 0
+	 * 		   else (boolean) false
+	 * */
 	@Override
 	public boolean isMatchedIdAndPw(MemberVO member) throws Exception {
 		int selectCountByIdAndPw = dao.selectCountByIdAndPw(member);
@@ -104,7 +108,9 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 
-
+	/* Searches ID and password from DB and returns user data.
+	 * @param: (String) id
+	 * @return: (MemberVO) user */
 	@Override
 	public MemberVO getUserInform(String id) throws Exception {
 		return dao.selectUserInform(id);
