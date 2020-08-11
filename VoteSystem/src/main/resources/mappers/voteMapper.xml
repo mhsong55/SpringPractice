@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kopo.mapper.voteMapper">
+	
+	<select id="selectHubo" resultType="HuboDTO">
+		SELECT ID, NAME FROM hubo
+	</select>
+	
+	<insert id="insertHubo">
+		INSERT INTO hubo (name) VALUES (#{name})
+	</insert>
+	
+	<delete id="deleteHubo">
+		DELETE FROM hubo WHERE id = #{id}
+	</delete>
+	
+	<insert id="insertTupyo">
+		INSERT INTO tupyo VALUES (#{id}, #{age})
+	</insert>
+	
+	<select id="selectOneCountTupyoById" resultType="Integer">
+		SELECT COUNT(id) FROM tupyo WHERE id = #{id}
+	</select>
+	
+	<select id="selectAllCountTupyo" resultType="Integer">
+		SELECT COUNT(id) FROM tupyo
+	</select>	
+	
+</mapper>
