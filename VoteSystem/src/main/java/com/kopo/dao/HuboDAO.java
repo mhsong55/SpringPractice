@@ -10,4 +10,6 @@ public interface HuboDAO {
 	public int insertHubo(HuboDTO hubo) throws Exception;
 	
 	public int deleteHubo(int id) throws Exception;
+	
+	public HuboDTO selectOne(int id) throws Exception;
 }

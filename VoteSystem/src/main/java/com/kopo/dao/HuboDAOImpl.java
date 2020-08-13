@@ -29,4 +29,9 @@ public class HuboDAOImpl implements HuboDAO {
 	public int deleteHubo(int id) throws Exception {
 		return sqlSession.delete(Namespace + ".deleteHubo", id);
 	}
+	
+	@Override
+	public HuboDTO selectOne(int id) throws Exception {
+		return sqlSession.selectOne(Namespace + ".selectOneHubo", id);
+	}
 }

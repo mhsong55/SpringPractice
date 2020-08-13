@@ -62,35 +62,25 @@
 		</span>
 	</div>
 	<p>
-	<span style="margin-left: 35px;">후보 별 득표율</span><br>
+	<span style="margin-left: 35px; font-weight: 700; font-size: 20px;">후보 별 득표율</span><br>
 	<div class="d-flex pl-2">
 		<table>
 		 
-		<%
-		/*
-			if(huboList.size() > 0) {
-				// DB에 저장된 모든 후보 정보에 대해 반복문 설정
-				for(Hubo hubo : huboList) {
-					// 득표율(voteRate[%]) = 후보 당 득표 수 / 전체 투표 수
-					double voteRate = voteService.voteRateCal(hubo.getId());
-					// voteCount = 후보당 득표 수
-					int voteCount = voteService.voteCountOne(hubo.getId());
-		*/
-		%>
-			<c:forEach var="i" begin="0" end="${huboList.length - 1 }">
+		
+			<c:forEach var="i" begin="0" end="${ huboList.size() - 1 }">
 				<tr class="tableRowBox">
 					<td class="tableRowBox" width="150">
-						<a href="C_02.jsp?id=${huboList.get(i).id}">
-							&nbsp${huboList.get(i).id} ${huboList.get(i).name}
+						<a href="oneView?id=${ huboList.get(i).id }">
+							&nbsp${ huboList.get(i).id } ${ huboList.get(i).name }
 						</a>
 					</td>
 					<td class="tableRowBox" width="500">
 						<div class="graph">
 							<!--득표율을 width 속성의 % 값으로 지정-->
-							<strong class="bar" style="width: ${rateList.get(i)}%"></strong>
+							<strong class="bar" style="width: ${ rateList.get(i) }%"></strong>
 							
 							<!--bar 부분 외의 빈 부분에 득표 수와 득표율을 text로 표시-->
-							<strong class="empty">${voteCountList.get(i)} (${rateList.get(i)}%)</strong>
+							<strong class="empty">${ voteCountList.get(i) } (${ rateList.get(i) }%)</strong>
 						</div>
 					</td>
 				</tr>

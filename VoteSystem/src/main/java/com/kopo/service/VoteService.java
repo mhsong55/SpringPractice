@@ -19,4 +19,10 @@ public interface VoteService {
 	public List<Double> rateList() throws Exception;
 	
 	public List<Integer> voteCountList() throws Exception;
+	
+	public HuboDTO selectOneHubo(int id) throws Exception;
+	
+	public List<List<Integer>> ageTendency(int id) throws Exception;
+	
+	public List<Double> tendencyRateList(int id) throws Exception;
 }

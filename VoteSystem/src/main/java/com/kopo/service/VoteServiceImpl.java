@@ -2,6 +2,7 @@ package com.kopo.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -80,5 +81,39 @@ public class VoteServiceImpl implements VoteService {
 		}
 		return voteCountList;
 	}
+
+	@Override // 해당 id의 후보 정보를 DB에서 조회
+	public HuboDTO selectOneHubo(int id) throws Exception {
+		return huboDao.selectOne(id);
+	}
+
+	@Override // 특정 후보에 대한 연령대 별 득표수를 조회
+	public List<List<Integer>> ageTendency(int id) throws Exception {
+		List<List<Integer>> ageTendency = new ArrayList<>();
+		ageTendency.add(tupyoDao.selectAgeTupyoWhereIdGroupByAge(id));
+		ageTendency.add(tupyoDao.selectCountTupyoWhereIdGroupByAge(id));
+		return ageTendency;
+	}
+
+	@Override // 연령대에 따른 득표율을 계산하여 return
+	public List<Double> tendencyRateList(int id) throws Exception {
+		// 특정 후보의 득표 수를 Database에서 조회
+		int voteCount = tupyoDao.selectOneCountTupyoById(id);
+		
+		// 특정 후보의 특정 연령대에 따른 득표 수를 조회해서 List에 저장
+		List<Integer> tendencyCountList = tupyoDao.selectCountTupyoWhereIdGroupByAge(id);
+		List<Double> tendencyRateList = new ArrayList<>();
+		double tendencyRate;
+		for(int tendencyCount : tendencyCountList) {
+			// 연령대별 득표율 = 연령대 별 득표 수 / 전체 득표수 * 100
+			tendencyRate = (double) tendencyCount / voteCount * 10000;
+			// 소수점 셋째자리에서 반올림
+			tendencyRate = Math.round(tendencyRate) / 100.0;
+			tendencyRateList.add(tendencyRate);
+		}
+		// 계산된 연령대별 득표율 List를 return
+		return tendencyRateList;
+	}
+	
 	
 }

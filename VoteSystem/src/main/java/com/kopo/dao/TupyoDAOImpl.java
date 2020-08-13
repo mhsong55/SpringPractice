@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
+import java.util.*;
 import com.kopo.dto.TupyoDTO;
 
 @Repository
@@ -31,4 +31,13 @@ public class TupyoDAOImpl implements TupyoDAO {
 		return sqlSession.selectOne(Namespace + ".selectAllCountTupyo");
 	}
 	
+	@Override
+	public List<Integer> selectAgeTupyoWhereIdGroupByAge(int id) throws Exception {
+		return sqlSession.selectList(Namespace + ".selectAgeTupyoWhereIdGroupByAge", id);
+	}	
+	
+	@Override
+	public List<Integer> selectCountTupyoWhereIdGroupByAge(int id) throws Exception {
+		return sqlSession.selectList(Namespace + ".selectCountTupyoWhereIdGroupByAge", id);
+	}	
 }

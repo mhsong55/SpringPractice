@@ -17,6 +17,10 @@
 		DELETE FROM hubo WHERE id = #{id}
 	</delete>
 	
+	<select id="selectOneHubo" resultType="HuboDTO" parameterType="Integer">
+		SELECT * FROM hubo WHERE id = #{id}
+	</select>
+	
 	<insert id="insertTupyo">
 		INSERT INTO tupyo VALUES (#{id}, #{age})
 	</insert>
@@ -29,4 +33,11 @@
 		SELECT COUNT(id) FROM tupyo
 	</select>	
 	
+	<select id="selectAgeTupyoWhereIdGroupByAge" resultType="Integer">
+		SELECT age FROM tupyo WHERE id = #{id} GROUP BY age ORDER BY age
+	</select>
+	
+	<select id="selectCountTupyoWhereIdGroupByAge" resultType="Integer">
+		SELECT COUNT(*) FROM tupyo WHERE id = #{id} GROUP BY age ORDER BY age
+	</select>
 </mapper>
