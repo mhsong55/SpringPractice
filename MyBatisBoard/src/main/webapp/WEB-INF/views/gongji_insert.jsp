@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.time.LocalDate"%>
+    pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +13,7 @@
 </head>
 <body>
 	<!--gongji_write.jsp에 Parameter: "key=INSERT, id, title, content" submit-->
-	<form method="post" name="insertForm" action="gongji_write.jsp?key=INSERT">
+	<form method="post" name="insertForm" action="insert-do">
 		<table width="650" border="1" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
@@ -31,7 +30,7 @@
 			<tr>
 				<td><b>일자</b></td>
 				<td>
-					<%=LocalDate.now() %>
+					${localDate}
 				</td>
 			</tr>
 			<tr>
@@ -44,7 +43,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="취소" OnClick="location.href='gongji_list.jsp'"></td>
+				<td><input type="button" value="취소" OnClick="location.href='/controller'"></td>
 				<td><input type="submit" value="쓰기"></td>
 			</tr>
 		</table>

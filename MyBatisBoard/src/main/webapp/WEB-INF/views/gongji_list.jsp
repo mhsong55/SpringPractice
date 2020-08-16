@@ -28,7 +28,7 @@
 			<td class="borderingTD" width="500"><p align="center">제목</p></td>
 			<td class="borderingTD" width="100"><p align="center">등록일</p></td>
 		</tr>
-		<c:forEach var="post" items="postList">
+		<c:forEach var="post" items="${postList}">
 			<tr>
 				<td class="borderingTD" width="50">
 					<p align="center">${post.id}</p>
@@ -49,7 +49,7 @@
 	<table width="650">
 		<tr>
 			<td width="500"></td>
-			<td><input type="button" value="신규" OnClick="window.location='gongji_insert.jsp'"></td>
+			<td><input type="button" value="신규" OnClick="location.href='insert'"></td>
 	</table>
 </body>
 </html>

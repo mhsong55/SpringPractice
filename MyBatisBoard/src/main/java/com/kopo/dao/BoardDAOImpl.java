@@ -17,7 +17,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public List<BoardVO> selectAllPost() throws Exception {
-		return sqlSession.selectList(Namespace+".selectMember");
+		return sqlSession.selectList(Namespace+".selectAllPost");
 	}
 
 }
