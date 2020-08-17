@@ -49,5 +49,13 @@ public class BoardServiceImpl implements BoardService {
 		return dao.selectOne(lastId);
 	}
 	
+	@Override
+	public String update(int id) throws Exception {
+		if(dao.update(dao.selectOne(id)) == 1) {
+			return "게시글이 수정되었습니다.";
+		}
+		return "게시글 수정 실패";
+	}
+	
 	
 }

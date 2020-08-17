@@ -35,7 +35,7 @@
 				</td>
 				<td class="borderingTD" width="500">
 					<p align="center">
-						<a href="post?id=${post.id}">
+						<a href="/controller/get/record?id=${post.id}">
 							${post.title}
 						</a>
 					</p>
@@ -49,7 +49,7 @@
 	<table width="650">
 		<tr>
 			<td width="500"></td>
-			<td><input type="button" value="신규" OnClick="location.href='get/new'"></td>
+			<td><input type="button" value="신규" OnClick="location.href='/controller/get/new'"></td>
 	</table>
 </body>
 </html>

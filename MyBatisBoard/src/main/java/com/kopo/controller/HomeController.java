@@ -51,7 +51,7 @@ public class HomeController {
 		String resultState = service.insert(param);
 		
 		model.addAttribute("resultState", resultState);
-		model.addAttribute("lastInsertedPostId", service.lastInsertedPost().getId());
+		model.addAttribute("postId", service.lastInsertedPost().getId());
 		return "gongji_write";
 	}
 	
@@ -64,8 +64,17 @@ public class HomeController {
 		return "gongji_view";
 	}
 	
-	@RequestMapping(value = "/put/record", method = RequestMethod.PUT)
-	public String update(@RequestParam int id, Model  model) throws Exception {
-		return null;
+	@RequestMapping(value = "/put/record", method = RequestMethod.GET)
+	public String updatePageMapping(@RequestParam int id, Model  model) throws Exception {
+		logger.info("id: " + id);
+		BoardVO post = service.selectOne(id);
+		model.addAttribute("post", post);
+		return "gongji_update";
+	}
+	
+	@RequestMapping(value = "/put/record/register", method = RequestMethod.POST)
+	public String update(@RequestParam HashMap<String, String> param, Model model) throws Exception {
+		logger.info("UPDATE");
+		return "gongji_write";
 	}
 }

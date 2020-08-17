@@ -14,4 +14,6 @@ public interface BoardService {
 	public String insert(Map<String, String> postDataMap) throws Exception;
 	
 	public BoardVO lastInsertedPost() throws Exception;
+	
+	public String update(int id) throws Exception;
 }

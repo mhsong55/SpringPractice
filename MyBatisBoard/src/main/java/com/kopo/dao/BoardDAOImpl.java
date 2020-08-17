@@ -29,8 +29,15 @@ public class BoardDAOImpl implements BoardDAO {
 	public int insertPost(BoardVO post) throws Exception {
 		return sqlSession.insert(Namespace + ".insertPost", post);
 	}
+	
 	@Override
 	public int lastInsertedPostId() throws Exception {
 		return sqlSession.selectOne(Namespace + ".lastInsertedPostId");
 	}
+	@Override
+	public int update(BoardVO post) throws Exception {
+		return sqlSession.update(Namespace + ".update", post);
+	}
+	
+	
 }

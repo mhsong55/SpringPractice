@@ -13,11 +13,11 @@
 		  crossorigin="anonymous">
 </head>
 <body>
-	<form method="post" name="viewForm" action="put/record?id=${post.id}">
+	<form method="GET" name="viewForm" action="/controller/put/record">
 		<table width="650px" border="1px" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
-				<td>${post.id}</td>
+				<td><input type="hidden" name="id" value="${post.id}">${post.id}</td>
 			</tr>
 			<tr>
 				<td><b>제목</b></td>
@@ -32,11 +32,10 @@
 				<td>${post.content}</td>
 			</tr>
 		</table>
-		<input type="hidden" name="_method" value="put">
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="목록" OnClick="location.href='get/list'"></td>
+				<td><input type="button" value="목록" OnClick="location.href='/controller'"></td>
 				<!--gongji_update.jsp에 parameter: "id = postId" submit-->
 				<td><input type="submit" value="수정"></td>
 		</table>

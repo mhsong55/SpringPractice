@@ -21,4 +21,8 @@
 		SELECT MAX(id) AS max_id FROM crudboard
 	</select>
 	
+	<update id="update" parameterType="BoardVO">
+		UPDATE crudboard SET title = #{title}, content = #{content} WHERE id = #{id}
+	</update>
+	
 </mapper>
