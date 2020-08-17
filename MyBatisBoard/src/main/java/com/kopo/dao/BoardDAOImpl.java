@@ -39,5 +39,8 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.update(Namespace + ".update", post);
 	}
 	
-	
+	@Override
+	public int delete(int id) throws Exception {
+		return sqlSession.delete(Namespace + ".delete", id);
+	}
 }

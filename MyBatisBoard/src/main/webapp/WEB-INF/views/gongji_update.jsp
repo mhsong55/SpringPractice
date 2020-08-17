@@ -9,9 +9,9 @@
 		<!--submit을 분기하기 위한 function-->
 		function submitForm(mode) {
  			if(mode == "WRITE") {
-				updateForm.action = "gongji_write.jsp";
+				updateForm.action = "record/${post.id}/register";
 			} else if(mode == "DELETE") {
-				updateForm.action = "gongji_delete.jsp";
+				updateForm.action = "../delete";
 			}
 			updateForm.submit();
 		}
@@ -53,7 +53,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="취소" OnClick="location.href='/controller'"></td>
+				<td><input type="button" value="취소" OnClick="location.href='/controller/get/record?id=${post.id}'"></td>
 				<td><input type="button" value="쓰기" OnClick="submitForm('WRITE')"></td>
 				<td><input type="button" value="삭제" OnClick="submitForm('DELETE')"></td>
 			</tr>

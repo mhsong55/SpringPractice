@@ -14,4 +14,6 @@ public interface BoardDAO {
 	public int lastInsertedPostId() throws Exception;
 	
 	public int update(BoardVO post) throws Exception;
+	
+	public int delete(int id) throws Exception;
 }
