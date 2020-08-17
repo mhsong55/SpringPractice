@@ -89,7 +89,7 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override // 특정 후보에 대한 연령대 별 득표수를 조회
 	public List<List<Integer>> ageTendency(int id) throws Exception {
-		List<List<Integer>> ageTendency = new ArrayList<>();
+		List<List<Integer>> ageTendency = new ArrayList<List<Integer>>();
 		ageTendency.add(tupyoDao.selectAgeTupyoWhereIdGroupByAge(id));
 		ageTendency.add(tupyoDao.selectCountTupyoWhereIdGroupByAge(id));
 		return ageTendency;

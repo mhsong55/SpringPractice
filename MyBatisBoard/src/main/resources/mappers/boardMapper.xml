@@ -4,9 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kopo.mapper.boardMapper">
-
+	
+	<select id="selectOne" resultType="BoardVO">
+		SELECT * FROM crudboard WHERE id = #{id}
+	</select>
+	
 	<select id="selectAllPost" resultType="BoardVO">
-		SELECT id, title, date, content FROM crudboard
+		SELECT id, title, date, content FROM crudboard ORDER BY id DESC
+	</select>
+	
+	<insert id="insertPost" parameterType="BoardVO">
+		INSERT INTO crudboard (title, date, content) values (#{title}, #{date}, #{content})
+	</insert>
+	
+	<select id="lastInsertedPostId" resultType="_int">
+		SELECT MAX(id) AS max_id FROM crudboard
 	</select>
 	
 </mapper>

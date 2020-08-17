@@ -35,7 +35,7 @@
 				</td>
 				<td class="borderingTD" width="500">
 					<p align="center">
-						<a href="gongji_view.jsp?key=${post.id}">
+						<a href="post?id=${post.id}">
 							${post.title}
 						</a>
 					</p>

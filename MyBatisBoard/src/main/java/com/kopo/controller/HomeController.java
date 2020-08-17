@@ -48,11 +48,19 @@ public class HomeController {
 	@RequestMapping(value = "/insert-do", method = RequestMethod.POST)
 	public String insertDo(@RequestParam HashMap<String, String> param, Model model) throws Exception {
 		logger.info("INSERT.DO");
-		// String key = "INSERT";
+		String resultState = service.insert(param);
 		
-		for ( String key : param.keySet() ) {
-			System.out.println(String.format("key: %s, value: %s", key, param.get(key)));
-		}
+		model.addAttribute("resultState", resultState);
+		model.addAttribute("lastInsertedPostId", service.lastInsertedPost().getId());
 		return "gongji_write";
+	}
+	
+	@RequestMapping(value = "/post", method = RequestMethod.GET)
+	public String oneViewPost(@RequestParam int id, Model model) throws Exception {
+		logger.info("ONE VIEW - POST ID: " + id);
+		BoardVO post = service.selectOne(id);
+		model.addAttribute("post", post);
+		
+		return "gongji_view";
 	}
 }
