@@ -16,7 +16,7 @@
 <body>
 	<SCRIPT LANGUAGE="JavaScript">
 		window.alert("${resultState}");
-		location.href="post?id=${lastInsertedPostId}";
+		location.href="get/regord?id=${lastInsertedPostId}";
 	</SCRIPT>
 </body>
 </html>

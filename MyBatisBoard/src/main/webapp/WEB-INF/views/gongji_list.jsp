@@ -49,7 +49,7 @@
 	<table width="650">
 		<tr>
 			<td width="500"></td>
-			<td><input type="button" value="신규" OnClick="location.href='insert'"></td>
+			<td><input type="button" value="신규" OnClick="location.href='get/new'"></td>
 	</table>
 </body>
 </html>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="service.*, domain.*"%>
+    pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +13,7 @@
 		  crossorigin="anonymous">
 </head>
 <body>
-	<form method="post" name="viewForm">
+	<form method="post" name="viewForm" action="put/record?id=${post.id}">
 		<table width="650px" border="1px" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
@@ -33,12 +32,13 @@
 				<td>${post.content}</td>
 			</tr>
 		</table>
+		<input type="hidden" name="_method" value="put">
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="목록" OnClick="location.href='/controller'"></td>
-				<!--gongji_update.jsp에 parameter: "key = postId" submit-->
-				<td><input type="button" value="수정" OnClick="location.href='gongji_update.jsp?key='"></td>
+				<td><input type="button" value="목록" OnClick="location.href='get/list'"></td>
+				<!--gongji_update.jsp에 parameter: "id = postId" submit-->
+				<td><input type="submit" value="수정"></td>
 		</table>
 	</form>
 </body>

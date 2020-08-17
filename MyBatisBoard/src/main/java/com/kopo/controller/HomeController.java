@@ -27,27 +27,27 @@ public class HomeController {
 	@Inject
 	private BoardService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/get/list"}, method = RequestMethod.GET)
 	public String list(Model model) throws Exception{
 
-		logger.info("LIST");
+		logger.info("GET/LIST");
 		List<BoardVO> postList = service.selectAllPost();
 		model.addAttribute("postList", postList);
 		
 		return "gongji_list";
 	}
 	
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/new", method = RequestMethod.GET)
 	public String insert(Model model) throws Exception {
-		logger.info("INSERT");
+		logger.info("GET/new");
 		model.addAttribute("localDate", LocalDate.now());
 		
 		return "gongji_insert";
 	}
 	
-	@RequestMapping(value = "/insert-do", method = RequestMethod.POST)
+	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public String insertDo(@RequestParam HashMap<String, String> param, Model model) throws Exception {
-		logger.info("INSERT.DO");
+		logger.info("POST");
 		String resultState = service.insert(param);
 		
 		model.addAttribute("resultState", resultState);
@@ -55,12 +55,17 @@ public class HomeController {
 		return "gongji_write";
 	}
 	
-	@RequestMapping(value = "/post", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/record", method = RequestMethod.GET)
 	public String oneViewPost(@RequestParam int id, Model model) throws Exception {
 		logger.info("ONE VIEW - POST ID: " + id);
 		BoardVO post = service.selectOne(id);
 		model.addAttribute("post", post);
 		
 		return "gongji_view";
+	}
+	
+	@RequestMapping(value = "/put/record", method = RequestMethod.PUT)
+	public String update(@RequestParam int id, Model  model) throws Exception {
+		return null;
 	}
 }
