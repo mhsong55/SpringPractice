@@ -25,4 +25,8 @@
 		UPDATE crudboard SET title = #{title}, content = #{content} WHERE id = #{id}
 	</update>
 	
+	<delete id="delete">
+		DELETE FROM crudboard WHERE id = #{id}
+	</delete>
+	
 </mapper>

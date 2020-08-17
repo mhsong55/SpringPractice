@@ -1,5 +1,6 @@
 package com.kopo.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,5 +16,7 @@ public interface BoardService {
 	
 	public BoardVO lastInsertedPost() throws Exception;
 	
-	public String update(int id) throws Exception;
+	public int update(HashMap <String, String> postDataMap) throws Exception;
+	
+	public int delete(int id) throws Exception;
 }

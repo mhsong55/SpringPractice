@@ -2,6 +2,7 @@ package com.kopo.service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,11 +29,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public String insert(Map<String, String> postDataMap) throws Exception {
+		
 		String id = postDataMap.get("id");
 		String title = postDataMap.get("title");
 		String content = postDataMap.get("content");
 		Date date = Date.valueOf(LocalDate.now());
 		BoardVO post = new BoardVO();
+		
 		post.setTitle(title);
 		post.setContent(content);
 		post.setDate(date);
@@ -50,12 +53,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public String update(int id) throws Exception {
-		if(dao.update(dao.selectOne(id)) == 1) {
-			return "게시글이 수정되었습니다.";
-		}
-		return "게시글 수정 실패";
+	public int update(HashMap <String, String> postDataMap) throws Exception {
+		BoardVO post = new BoardVO();
+		
+		post.setId(Integer.parseInt(postDataMap.get("id")));
+		post.setTitle(postDataMap.get("title"));
+		post.setContent(postDataMap.get("content"));
+		
+		return dao.update(post);
 	}
 	
-	
+	@Override
+	public int delete(int id) throws Exception {
+		return dao.delete(id);
+	}
 }
