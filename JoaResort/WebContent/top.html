@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 홈페이지 테스트 </title>
+    <link href="css/top.css" type="text/css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-light flex-column flex-md-row bd-navbar" style="background-color: #333">
+        <div class="col-2"></div>
+        <div class="menu">
+            <button class="menuTab">리조트소개</button>
+            <div class="menu-content">
+                <a href="main.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='#000000'">조아 리조트</span>
+                </a>
+                <a href="a_01.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='#000000'">VIP 룸</span>
+                </a>
+                <a href="a_02.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='#000000'">일반 룸</span=>
+                </a>
+                <a href="a_03.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='#000000'">합리적인 룸</span=>
+                </a>
+            </div>
+        </div>
+        <div class="menu">
+            <button class="menuTab">찾아오기</button>
+            <div class="menu-content">
+                <a href="b_01.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">찾아오는 길</span>
+                </a>
+                <a href="b_02.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">대중교통 이용</span>
+                </a>
+                <a href="b_03.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">자가용 이용</span>
+                </a>
+            </div>
+        </div>
+        <div class="menu">
+            <button class="menuTab">주변여행지</button>
+            <div class="menu-content">
+                <a href="c_01.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">높아 산</span>
+                </a>
+                <a href="c_02.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">조아 해수욕장</span>
+                </a>
+                <a href="c_03.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">따끈 온천</span>
+                </a>
+            </div>
+        </div>
+        <div class="menu">
+            <button class="menuTab">예약하기</button>
+            <div class="menu-content">
+                <a href="d_01.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">예약상황</span>
+                </a>
+                <a href="d_02.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">예약하기</span>
+                </a>
+                <a href="adm_allview.jsp">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">관리자 페이지</span>
+                </a>
+                <a href="adm_logout.jsp">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">관리자 로그아웃</span>
+                </a>
+            </div>
+        </div>
+        <div class="menu">
+            <button class="menuTab">리조트소식</button>
+            <div class="menu-content">
+                <a href="e_01.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">리조트소식</span>
+                </a>
+                <a href="e_02.html">
+                    <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">이용후기</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-5"></div>
+    </div>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!--
+    <center>
+        <table cellpadding='0' cellspacing='1' border='0' width='750'>
+            <td width='150'>
+                <a href='main.html' target=main><img src="logo.jpg" width='140' height='50' border='0'></a>
+            </td>
+            <td>
+                <table cellpadding='0' cellspacing='1' border='0' width='600' height='60'>
+                    <tr height='30'>
+                        <td width='100' onmouseover='fncShow(0);' id='m0'><b> 리조트소개 </b></td>
+                        <td width='100' onmouseover='fncShow(1);' id='m1'><b> 찾아오기 </b></td>
+                        <td width='100' onmouseover='fncShow(2);' id='m2'><b> 주변여행지 </b></td>
+                        <td width='100' onmouseover='fncShow(3);' id='m3'><b> 리조트소식 </b></td>
+                        <td width='100'></td>
+                    </tr>
+                    <tr height='30'>
+                        <td colspan='6'>
+
+                            <table id='menu0' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+                                <tr>
+                                    <td width='0'></td>
+                                    <td width='600' style='text-align:left;'>
+                                        <a href='main.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 조아 리조트 </span>
+                                        </a>
+                                        <a href='a_01.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| VIP 룸 </span>
+                                        </a>
+                                        <a href='a_02.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 일반 룸 </span>
+                                        </a>
+                                        <a href='a_03.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 합리적인 룸 |</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table id='menu1' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+                                <tr>
+                                    <td width='100'></td>
+                                    <td width='500' style='text-align:left;'>
+                                        <a href='b_01.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 찾아오는 길 </span>
+                                        </a>
+                                        <a href='b_02.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 대중교통 이용 </span>
+                                        </a>
+                                        <a href='b_03.html' target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 자가용 이용 |</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <table id="menu2" style="display:none;" cellpadding="0" cellspacing="0" border="0" width="600" height="30">
+                                <tr>
+                                    <td width="200"></td>
+                                    <td width="400" style="text-align:left;">
+                                        <a href="c_01.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 높아 산 </span>
+                                        </a>
+                                        <a href="c_02.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 조아 해수욕장 </span>
+                                        </a>
+                                        <a href="c_03.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 따끈 온천 |</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table id="menu3" style="display:none;" cellpadding="0" cellspacing="0" border="0" width="600" height="30">
+                                <tr>
+                                    <td width="300"></td>
+                                    <td width="300" style="text-align:left;">
+                                        <a href="d_01.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 예약상황 </span>
+                                        </a>
+                                        <a href="d_02.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 예약하기 </span>
+                                        </a>
+                                        <a href="adm_allview.jsp" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 관리자 페이지 </span>
+                                        </a>
+                                        <a href="adm_logout.jsp" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 관리자 로그아웃 |</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table id="menu4" style="display:none;" cellpadding="0" cellspacing="0" border="0" width="600" height="30">
+                                <tr>
+                                    <td width="350"></td>
+                                    <td width="250" style="text-align:left;">
+                                        <a href="e_01.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 리조트소식 </span>
+                                        </a>
+                                        <a href="e_02.html" target=main>
+                                            <span onmouseover="this.style.color='#ff0000'" onmouseover="this.style.color='#000000'">| 이용후기 |</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </table>
+    </center>
+	
+    <script type="text/javascript" src="./top.js"></script>
+
+-->
