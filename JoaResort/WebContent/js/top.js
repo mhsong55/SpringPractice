@@ -21,7 +21,7 @@ function fncHide(pos) {
 }
 */
 function menuItemAddListner() {
-    let element = document.getElementById("menuItem");
+    let element = document.getElementsByClassName("menuItem");
     element.addEventListener("mouseover", element.style.color="#ff0000");
     element.addEventListener("mouseout", element.style.color="#000000");
 }

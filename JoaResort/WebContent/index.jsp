@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,24 +11,12 @@
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#header").load("./top.html");
-            $("#middle").load("./main.html");
-        });
-    </script>
+
 </head>
-<body onload="menuItemAddListner();" background="background.jpg">
-    <div id="header"></div>
-    <div id="middle">
-        <center>
-            <img src="main.jpg" width=400 height=350>
-            <br><h2>조아리조트로 놀러오셔요</h2>
-        </center>
-    </div>
-    <script>
-        headerCall();
-    </script>
+<body>
+    <jsp:include page="top.jsp" flush="false"/>
+   	<jsp:include page="main.html" flush="false"/>
+   	
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/top.js"></script>
