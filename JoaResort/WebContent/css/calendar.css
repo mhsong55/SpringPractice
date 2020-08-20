@@ -1,0 +1,55 @@
+.calendarDay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(90% / 7);
+	height: 70px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 20px;
+	border: 1px solid black;
+}
+.horizontalGutter {
+ 	margin-right: 0.5%;
+}
+.verticalGutter {
+	margin-top: 1%;
+}
+.weekOfDayContainer {
+	display: flex;
+	justify-content: center;
+	width: calc(90% / 7);
+	border-radius: 5px;
+}
+.weekOfDay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+	font-weight: bolder;
+}
+#calendarHeader {
+	display: flex;
+	justify-content: center;
+}
+#dayContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.thisMonth {
+	background-color: aliceblue;
+}
+.prevMonth,.nextMonth {
+	background-color: linen;
+}
+
+#calendarMonthYear {
+	display: flex;
+	justify-content: space-evenly;
+	font-weight: bolder;
+	font-size: 20px;
+}
+#calendar {
+	text-align: center;
+}

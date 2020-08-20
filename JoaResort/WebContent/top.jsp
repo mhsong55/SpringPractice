@@ -2,7 +2,8 @@
     pageEncoding="UTF-8" %>
 
 <div class="navbar navbar-light flex-column flex-md-row bd-navbar" style="background-color: #333">
-    <div class="col-2"></div>
+    
+    <div class="col" style="color: #ffffff; text-align:center;">PageNotFound<br>\${RESORT}</div>
     <div class="menu">
         <button class="menuTab">리조트소개</button>
         <div class="menu-content">
