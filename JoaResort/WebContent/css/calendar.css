@@ -8,6 +8,8 @@
 	border-radius: 5px;
 	padding: 20px;
 	border: 1px solid black;
+	font-weight: bolder;
+	font-size: 20px;
 }
 .horizontalGutter {
  	margin-right: 0.5%;
@@ -27,6 +29,7 @@
 	align-items: center;
 	height: 30px;
 	font-weight: bolder;
+	font-size: 20px;
 }
 #calendarHeader {
 	display: flex;

@@ -40,14 +40,6 @@ public class CalendarPrint {
 		return this.year;
 	}
 	
-	public List<Integer> getCalendarPrintDate() {
-		List<Integer> calPrintDateList = new ArrayList<>();
-		int prevMonthVal = this.monthVal - 1;
-		int nextMonthVal = this.monthVal + 1;
-		
-		return calPrintDateList;
-	}
-	
 	public List<String> getDayList() {
 		List<String> dayList = new ArrayList<>();
 		int firstDayOfThisMonth = LocalDate.of(this.year, this.monthVal, 1).getDayOfWeek().getValue();
@@ -58,20 +50,38 @@ public class CalendarPrint {
 			yearOfPrevMonth -= 1;
 			prevMonth = 12;
 		}
+		
 		int lastDateOfPrevMonth = LocalDate.of(yearOfPrevMonth, prevMonth, 1).lengthOfMonth();
 		int prevMonthDayCount = firstDayOfThisMonth == 7 ? 0 : firstDayOfThisMonth;
-		int nextMonthDayCount = 7 - (lastDayOfThisMonth + 1);
+		int nextMonthDayCount = lastDayOfThisMonth == 7 ? 6 : 7 - (lastDayOfThisMonth + 1);
 		
 		for(int i = lastDateOfPrevMonth - prevMonthDayCount + 1; i < lastDateOfPrevMonth + 1; i++) {
 			dayList.add("prevMonth");
 		}
-
+		
 		for(int i = 1; i < this.lengthOfMonth + 1; i++) {
 			dayList.add(Integer.toString(i));
-		}
+		}		
 		
 		for(int i = 1; i < nextMonthDayCount + 1; i++) {
 			dayList.add("nextMonth");
+		}
+		
+		int weekCount = (int) Math.ceil(dayList.size()/7.0);
+		int cnt = 0;
+		
+		System.out.println(String.format("%8s%2s월\n"," ",this.monthVal));
+		
+		for(int i = 0; i < weekCount; i++) {
+			for(int j = 0; j < 7; j++) {
+				if (dayList.get(cnt).equals("prevMonth") || dayList.get(cnt).equals("nextMonth")) {
+					System.out.print(String.format("%2s ", " "));
+				} else {
+					System.out.print(String.format("%2s ", dayList.get(cnt)));
+				}
+				cnt++;
+			}
+			System.out.print("\n");
 		}
 		
 		return dayList;

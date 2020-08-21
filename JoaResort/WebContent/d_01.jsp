@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>PageNotFound \${RESORT} 예약</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="css/top.css" type="text/css" rel="stylesheet"/>
@@ -28,18 +28,25 @@
 		int year = getParamYear == null ? now.getYear() : Integer.parseInt(getParamYear);
 		int month = getParamMonth == null ? now.getMonthValue() : Integer.parseInt(getParamMonth);
 		int date = getParamDate == null ? now.getDayOfMonth() : Integer.parseInt(getParamDate);
-		System.out.println("year = " + year + "month = " + month);
-		if (month == 0) {
-			month = 12;
-			year -= 1;
-		} else if (month == 13) {
-			month = 1;
-			year += 1;
+		int prevMonth = month - 1;
+		int nextMonth = month + 1;
+		int yearOfPrevMonth = year;
+		int yearOfNextMonth = year;
+		System.out.println("\nyear = " + year + ", month = " + month);
+
+		if (prevMonth == 0) {
+			prevMonth = 12;
+			yearOfPrevMonth -= 1;
+		} else if (nextMonth == 13) {
+			nextMonth = 1;
+			yearOfNextMonth += 1;
 		}
 		
 		CalendarPrint calendarPrint = new CalendarPrint(year, month, date);
 		List<String> calDayList = calendarPrint.getDayList();
-		int weekCount = calDayList.size()/7;
+		
+		int weekCount = (int) Math.ceil(calDayList.size()/7.0);
+		
 		int cnt = 0;
 		String[] dayArray = {"일","월","화","수","목","금","토"};
 		
@@ -53,12 +60,12 @@
 			<div id="calendarMonthYear">
 				<div>
 					<button type="button" class="btn btn-outline-primary" 
-						    onclick="location.href='d_01.jsp?year=<%=year %>&month=<%=month - 1%>'">&lt</button>
+						    onclick="location.href='d_01.jsp?year=<%=yearOfPrevMonth %>&month=<%=prevMonth%>'">&lt</button>
 				</div>
 				<div><%=year %> 년 <%=month %> 월</div>
 				<div>
 					<button type="button" class="btn btn-outline-primary"
-							onclick="location.href='d_01.jsp?year=<%=year %>&month=<%=month + 1%>'">&gt</button>
+							onclick="location.href='d_01.jsp?year=<%=yearOfNextMonth%>&month=<%=nextMonth%>'">&gt</button>
 				</div>
 			</div>
 			<div id="calendarHeader">
