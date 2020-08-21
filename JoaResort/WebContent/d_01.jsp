@@ -14,7 +14,6 @@
     <link href="css/calendar.css" type="text/css" rel="stylesheet"/>
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script language="javascript">
     	var clickCount = 0;
@@ -29,22 +28,21 @@
 		int year = getParamYear == null ? now.getYear() : Integer.parseInt(getParamYear);
 		int month = getParamMonth == null ? now.getMonthValue() : Integer.parseInt(getParamMonth);
 		int date = getParamDate == null ? now.getDayOfMonth() : Integer.parseInt(getParamDate);
+		System.out.println("year = " + year + "month = " + month);
+		if (month == 0) {
+			month = 12;
+			year -= 1;
+		} else if (month == 13) {
+			month = 1;
+			year += 1;
+		}
 		
 		CalendarPrint calendarPrint = new CalendarPrint(year, month, date);
 		List<String> calDayList = calendarPrint.getDayList();
 		int weekCount = calDayList.size()/7;
 		int cnt = 0;
+		String[] dayArray = {"일","월","화","수","목","금","토"};
 		
-		int prevMonth = month - 1;
-		int nextMonth = month + 1; 
-		if (prevMonth == -1) {
-			prevMonth = 12;
-			year -= 1;
-		}
-		if (nextMonth == 13) {
-			nextMonth = 1;
-			year += 1;
-		}
 	%>
 </head>
 <body>
@@ -54,73 +52,40 @@
 		<div class="" id="calendar">
 			<div id="calendarMonthYear">
 				<div>
-					<button type="button" class="btn btn-outline-primary" onclick="location.href='d_01.jsp?year'">&lt</button>
+					<button type="button" class="btn btn-outline-primary" 
+						    onclick="location.href='d_01.jsp?year=<%=year %>&month=<%=month - 1%>'">&lt</button>
 				</div>
 				<div><%=year %> 년 <%=month %> 월</div>
 				<div>
-					<button type="button" class="btn btn-outline-primary">&gt</button>
+					<button type="button" class="btn btn-outline-primary"
+							onclick="location.href='d_01.jsp?year=<%=year %>&month=<%=month + 1%>'">&gt</button>
 				</div>
 			</div>
 			<div id="calendarHeader">
+			<% 	for(int i = 0; i < dayArray.length; i++) { %>
 				<div class="weekOfDayContainer horizontalGutter verticalGutter">
 					<div class="weekOfDay">
-						일
+						<%=dayArray[i] %>
 					</div>
 				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						월
-					</div>
-				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						화
-					</div>
-				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						수
-					</div>
-				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						목
-					</div class="weekOfDay">
-				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						금
-					</div>
-				</div>
-				<div class="weekOfDayContainer horizontalGutter verticalGutter">
-					<div class="weekOfDay">
-						토
-					</div>
-				</div>
+			<%	}	%>
 			</div>
 			<div id="dayContainer">
 			<%
 			for(int i = 0; i < weekCount; i++) {
 				for(int j = 0; j < 7; j++) {
-					if (calDayList.get(cnt).equals("prevMonth")) {
-			%>			
+					if (calDayList.get(cnt).equals("prevMonth")) {%>			
 						<div class="calendarDay horizontalGutter verticalGutter prevMonth"></div>
-			<%
-					} else if (calDayList.get(cnt).equals("nextMonth")) { 
-			%>
-					<div class="calendarDay horizontalGutter verticalGutter nextMonth"></div>
-			<%
-					} else {
-			%>
-					<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth">
-						<%=calDayList.get(cnt)%>
-					</div>
-			<%
-					}
+			<%		} else if (calDayList.get(cnt).equals("nextMonth")) {%>
+						<div class="calendarDay horizontalGutter verticalGutter nextMonth"></div>
+			<%		} else { %>
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth">
+							<%=calDayList.get(cnt)%>
+						</div>
+			<%		}
 				cnt++;
 				}
-			}
-			%>
+			}	%>
 			</div>
 		</div>
 	</div>
