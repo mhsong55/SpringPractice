@@ -53,12 +53,12 @@
 
 .menu-content a:hover {
     background-color: #ddd;
+    text-decoration: none;
+    color: black;
 }
 
 .menu:hover .menu-content {
     display: block;
 }
 
-.menuItem:hover {
-    color: #ff0000;
-}
+

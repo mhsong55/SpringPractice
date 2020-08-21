@@ -1,3 +1,7 @@
+#pageTitle {
+	display: flex;
+	justify-content: center;
+}
 .calendarDay {
 	display: flex;
 	justify-content: center;
@@ -11,6 +15,7 @@
 	font-weight: bolder;
 	font-size: 20px;
 }
+
 .horizontalGutter {
  	margin-right: 0.5%;
 }
@@ -31,11 +36,11 @@
 	font-weight: bolder;
 	font-size: 20px;
 }
-#calendarHeader {
+.calendarHeader {
 	display: flex;
 	justify-content: center;
 }
-#dayContainer {
+.dayContainer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -43,16 +48,32 @@
 .thisMonth {
 	background-color: aliceblue;
 }
-.prevMonth,.nextMonth {
-	background-color: linen;
+
+.thisMonth:hover {
+	background-color: lavenderblush;
 }
 
-#calendarMonthYear {
+.thisMonth:not( :hover ) {
+	background-color: aliceblue;
+}
+.prevMonth, .nextMonth {
+	background-color: lightyellow;
+}
+
+.calendarMonthYear {
 	display: flex;
 	justify-content: space-evenly;
 	font-weight: bolder;
 	font-size: 20px;
 }
-#calendar {
+.calendar {
 	text-align: center;
+}
+
+.sunday {
+	color: red;
+}
+
+.saturday {
+	color: blue;
 }

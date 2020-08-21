@@ -42,13 +42,24 @@ public class CalendarPrint {
 	
 	public List<String> getDayList() {
 		List<String> dayList = new ArrayList<>();
+
 		int firstDayOfThisMonth = LocalDate.of(this.year, this.monthVal, 1).getDayOfWeek().getValue();
 		int lastDayOfThisMonth = LocalDate.of(this.year, this.monthVal, this.lengthOfMonth).getDayOfWeek().getValue();
+		
 		int yearOfPrevMonth = this.year;
+		int yearOfNextMonth = this.year;
+		
 		int prevMonth = this.monthVal - 1;
+		int nextMonth = this.monthVal + 1;
+		
 		if (prevMonth == 0) {
 			yearOfPrevMonth -= 1;
 			prevMonth = 12;
+		}
+		
+		if (nextMonth == 13) {
+			nextMonth = 1;
+			yearOfNextMonth += 1;
 		}
 		
 		int lastDateOfPrevMonth = LocalDate.of(yearOfPrevMonth, prevMonth, 1).lengthOfMonth();
@@ -85,5 +96,63 @@ public class CalendarPrint {
 		}
 		
 		return dayList;
+	}
+	
+	public List<LocalDate> getDayToLocalDateList() {
+		List<LocalDate> localDateList = new ArrayList<>();
+		
+		int firstDayOfThisMonth = LocalDate.of(this.year, this.monthVal, 1).getDayOfWeek().getValue();
+		int lastDayOfThisMonth = LocalDate.of(this.year, this.monthVal, this.lengthOfMonth).getDayOfWeek().getValue();
+		
+		int yearOfPrevMonth = this.year;
+		int yearOfNextMonth = this.year;
+		
+		int prevMonth = this.monthVal - 1;
+		int nextMonth = this.monthVal + 1;
+		
+		if (prevMonth == 0) {
+			yearOfPrevMonth -= 1;
+			prevMonth = 12;
+		}
+		
+		if (nextMonth == 13) {
+			nextMonth = 1;
+			yearOfNextMonth += 1;
+		}
+		
+		int lastDateOfPrevMonth = LocalDate.of(yearOfPrevMonth, prevMonth, 1).lengthOfMonth();
+		int prevMonthDayCount = firstDayOfThisMonth == 7 ? 0 : firstDayOfThisMonth;
+		int nextMonthDayCount = lastDayOfThisMonth == 7 ? 6 : 7 - (lastDayOfThisMonth + 1);
+		
+		for(int i = lastDateOfPrevMonth - prevMonthDayCount + 1; i < lastDateOfPrevMonth + 1; i++) {
+			localDateList.add(LocalDate.of(yearOfPrevMonth, prevMonth, i));
+		}
+		
+		for(int i = 1; i < this.lengthOfMonth + 1; i++) {
+			localDateList.add(LocalDate.of(this.year, this.monthVal, i));
+		}		
+		
+		for(int i = 1; i < nextMonthDayCount + 1; i++) {
+			localDateList.add(LocalDate.of(yearOfNextMonth, nextMonth, i));
+		}
+		
+		int weekCount = (int) Math.ceil(localDateList.size()/7.0);
+		int cnt = 0;
+		
+		System.out.println(String.format("%8s%2s월\n"," ",this.monthVal));
+		
+		for(int i = 0; i < weekCount; i++) {
+			for(int j = 0; j < 7; j++) {
+				if (localDateList.get(cnt).getMonthValue() == prevMonth || localDateList.get(cnt).getMonthValue() == nextMonth) {
+					System.out.print(String.format("%2s ", " "));
+				} else {
+					System.out.print(String.format("%2s ", localDateList.get(cnt).getDayOfMonth()));
+				}
+				cnt++;
+			}
+			System.out.print("\n");
+		}
+		
+		return localDateList;
 	}
 }

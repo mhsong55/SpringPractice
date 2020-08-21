@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>PageNotFound \${RESORT} 예약</title>
+	<title>PNF 리조트 - 예약상황</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="css/top.css" type="text/css" rel="stylesheet"/>
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script language="javascript">
-    	var clickCount = 0;
     	
     </script>
 	<%	
@@ -37,13 +36,15 @@
 		if (prevMonth == 0) {
 			prevMonth = 12;
 			yearOfPrevMonth -= 1;
-		} else if (nextMonth == 13) {
+		}
+		if (nextMonth == 13) {
 			nextMonth = 1;
 			yearOfNextMonth += 1;
 		}
 		
 		CalendarPrint calendarPrint = new CalendarPrint(year, month, date);
 		List<String> calDayList = calendarPrint.getDayList();
+		List<LocalDate> localDateList = calendarPrint.getDayToLocalDateList();
 		
 		int weekCount = (int) Math.ceil(calDayList.size()/7.0);
 		
@@ -56,8 +57,10 @@
 	<jsp:include page="top.jsp" flush="false"/>
 	<div class="container">
 		<p></p>
-		<div class="" id="calendar">
-			<div id="calendarMonthYear">
+		<div id="pageTitle"><h3><b>예약 현황</b></h3></div>
+		<p></p>
+		<div class="calendar">
+			<div class="calendarMonthYear">
 				<div>
 					<button type="button" class="btn btn-outline-primary" 
 						    onclick="location.href='d_01.jsp?year=<%=yearOfPrevMonth %>&month=<%=prevMonth%>'">&lt</button>
@@ -68,7 +71,7 @@
 							onclick="location.href='d_01.jsp?year=<%=yearOfNextMonth%>&month=<%=nextMonth%>'">&gt</button>
 				</div>
 			</div>
-			<div id="calendarHeader">
+			<div class="calendarHeader">
 			<% 	for(int i = 0; i < dayArray.length; i++) { %>
 				<div class="weekOfDayContainer horizontalGutter verticalGutter">
 					<div class="weekOfDay">
@@ -77,7 +80,7 @@
 				</div>
 			<%	}	%>
 			</div>
-			<div id="dayContainer">
+			<div class="dayContainer">
 			<%
 			for(int i = 0; i < weekCount; i++) {
 				for(int j = 0; j < 7; j++) {
@@ -85,8 +88,19 @@
 						<div class="calendarDay horizontalGutter verticalGutter prevMonth"></div>
 			<%		} else if (calDayList.get(cnt).equals("nextMonth")) {%>
 						<div class="calendarDay horizontalGutter verticalGutter nextMonth"></div>
-			<%		} else { %>
-						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth">
+			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 7) { // 일요일인 경우 %>
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth sunday"
+							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
+							<%=calDayList.get(cnt)%>
+						</div>
+			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 6) { // 토요일인 경우 %>
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth saturday"
+							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
+							<%=calDayList.get(cnt)%>
+						</div>
+			<%	    } else { %>
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth"
+							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
 							<%=calDayList.get(cnt)%>
 						</div>
 			<%		}
@@ -95,7 +109,20 @@
 			}	%>
 			</div>
 		</div>
+		<br>
+		<div id="reservationBoard">
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title">예약 상황</h5>
+				</div>
+				<div class="card-body">
+					뿌잉뿌잉뿌잉
+				</div>
+			</div>
+		</div>
+		
 	</div>
+	<script type="text/javascript" src="js/calendar.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/top.js"></script>

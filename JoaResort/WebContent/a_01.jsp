@@ -10,7 +10,7 @@
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>조아리조트 - VIP룸</title>
+    <title>PNF 리조트 - VIP룸</title>
 </head>
 <body>
 	<jsp:include page="top.jsp" flush="false"/>

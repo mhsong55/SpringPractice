@@ -8,7 +8,7 @@
         <button class="menuTab">리조트소개</button>
         <div class="menu-content">
             <a href="index.jsp">
-                <span class="menuItem">조아 리조트</span>
+                <span class="menuItem">PNF 리조트</span>
             </a>
             <a href="a_01.jsp">
                 <span class="menuItem">VIP 룸</span>

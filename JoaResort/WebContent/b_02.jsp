@@ -10,7 +10,7 @@
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>PNF 리조트 - 오시는 길</title>
+    <title>PNF 리조트 - 대중교통 이용</title>
 </head>
 <body>
 	<jsp:include page="top.jsp" flush="false"/>
@@ -47,7 +47,7 @@
                 </div>
         </table>
         <br>
-        <h2>조아리조트의 위치: 위도(37.3860521), 경도(127.1214038)</h2>
+        <h2>대중 교통을 이용해 방문하는 방법 안내</h2>
     </center>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
