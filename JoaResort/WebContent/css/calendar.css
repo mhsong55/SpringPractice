@@ -1,21 +1,33 @@
+html {
+	font-size: 10px;
+}
 #pageTitle {
 	display: flex;
 	justify-content: center;
 }
 .calendarDay {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: calc(90% / 7);
-	height: 70px;
+	height: 100px;
 	box-sizing: border-box;
 	border-radius: 5px;
-	padding: 20px;
+	overflow: hidden;
 	border: 1px solid black;
-	font-weight: bolder;
-	font-size: 20px;
+	/*font-weight: bolder;
+	font-size: 20px;*/
 }
-
+.resv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	color: black;
+	font-size: 1.3rem;
+}
 .horizontalGutter {
  	margin-right: 0.5%;
 }
@@ -70,10 +82,23 @@
 	text-align: center;
 }
 
+.bolderFont {
+	font-weight: bolder;
+}
 .sunday {
 	color: red;
+	font-size: 1.6rem;
 }
 
 .saturday {
 	color: blue;
+	font-size: 1.6rem;
+}
+.notWeekend {
+	font-size: 1.6rem;
+}
+
+#reservationBoard {
+	display:none;
+	font-size: 1.6rem;
 }

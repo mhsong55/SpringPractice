@@ -57,7 +57,7 @@
 	<jsp:include page="top.jsp" flush="false"/>
 	<div class="container">
 		<p></p>
-		<div id="pageTitle"><h3><b>예약 현황</b></h3></div>
+		<div id="pageTitle"><h3><b>빈 방 현황</b></h3></div>
 		<p></p>
 		<div class="calendar">
 			<div class="calendarMonthYear">
@@ -89,19 +89,58 @@
 			<%		} else if (calDayList.get(cnt).equals("nextMonth")) {%>
 						<div class="calendarDay horizontalGutter verticalGutter nextMonth"></div>
 			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 7) { // 일요일인 경우 %>
-						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth sunday"
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth"
 							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
-							<%=calDayList.get(cnt)%>
+							<div class="sunday bolderFont">
+								<%=calDayList.get(cnt)%>
+							</div>
+							<div class="resv">
+								<div>
+									VIP 룸
+								</div>
+								<div>
+									일반 룸
+								</div>
+								<div>
+									합리 룸
+								</div>
+							</div>
 						</div>
 			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 6) { // 토요일인 경우 %>
-						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth saturday"
+						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth"
 							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
-							<%=calDayList.get(cnt)%>
+							<div class="saturday bolderFont">
+								<%=calDayList.get(cnt)%>
+							</div>
+							<div class="resv">
+								<div>
+									VIP 룸
+								</div>
+								<div>
+									일반 룸
+								</div>
+								<div>
+									합리 룸
+								</div>
+							</div>
 						</div>
 			<%	    } else { %>
 						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth"
 							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
-							<%=calDayList.get(cnt)%>
+							<div class="notWeekend bolderFont">
+								<%=calDayList.get(cnt)%>
+							</div>
+							<div class="resv">
+								<div>
+									VIP 룸
+								</div>
+								<div>
+									일반 룸
+								</div>
+								<div>
+									합리 룸
+								</div>
+							</div>
 						</div>
 			<%		}
 				cnt++;
@@ -113,14 +152,14 @@
 		<div id="reservationBoard">
 			<div class="card">
 				<div class="card-header">
-					<h5 class="card-title">예약 상황</h5>
+					<h5 class="card-title">VIP 룸</h5>
 				</div>
 				<div class="card-body">
 					뿌잉뿌잉뿌잉
 				</div>
 			</div>
 		</div>
-		
+		<br>
 	</div>
 	<script type="text/javascript" src="js/calendar.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
