@@ -3,7 +3,7 @@
 
 <div class="navbar navbar-dark flex-column flex-md-row bd-navbar" style="background-color: #333">
     
-    <div class="col" style="color: #ffffff; text-align:center;">PageNotFound<br>\${RESORT}</div>
+    <div id="resortName" class="col" style="color: #ffffff; text-align:center;">PageNotFound<br>\${RESORT}</div>
     <div class="menu">
         <button class="menuTab">리조트소개</button>
         <div class="menu-content">

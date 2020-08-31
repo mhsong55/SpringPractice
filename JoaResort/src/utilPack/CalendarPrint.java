@@ -1,4 +1,4 @@
-package calendarPrint;
+package utilPack;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -77,24 +77,6 @@ public class CalendarPrint {
 		for(int i = 1; i < nextMonthDayCount + 1; i++) {
 			dayList.add("nextMonth");
 		}
-		
-		int weekCount = (int) Math.ceil(dayList.size()/7.0);
-		int cnt = 0;
-		
-		System.out.println(String.format("%8s%2s월\n"," ",this.monthVal));
-		
-		for(int i = 0; i < weekCount; i++) {
-			for(int j = 0; j < 7; j++) {
-				if (dayList.get(cnt).equals("prevMonth") || dayList.get(cnt).equals("nextMonth")) {
-					System.out.print(String.format("%2s ", " "));
-				} else {
-					System.out.print(String.format("%2s ", dayList.get(cnt)));
-				}
-				cnt++;
-			}
-			System.out.print("\n");
-		}
-		
 		return dayList;
 	}
 	
@@ -134,23 +116,6 @@ public class CalendarPrint {
 		
 		for(int i = 1; i < nextMonthDayCount + 1; i++) {
 			localDateList.add(LocalDate.of(yearOfNextMonth, nextMonth, i));
-		}
-		
-		int weekCount = (int) Math.ceil(localDateList.size()/7.0);
-		int cnt = 0;
-		
-		System.out.println(String.format("%8s%2s월\n"," ",this.monthVal));
-		
-		for(int i = 0; i < weekCount; i++) {
-			for(int j = 0; j < 7; j++) {
-				if (localDateList.get(cnt).getMonthValue() == prevMonth || localDateList.get(cnt).getMonthValue() == nextMonth) {
-					System.out.print(String.format("%2s ", " "));
-				} else {
-					System.out.print(String.format("%2s ", localDateList.get(cnt).getDayOfMonth()));
-				}
-				cnt++;
-			}
-			System.out.print("\n");
 		}
 		
 		return localDateList;

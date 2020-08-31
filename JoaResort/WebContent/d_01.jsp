@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="calendarPrint.*, java.util.*, java.time.*"%>
+    import="utilPack.*, java.util.*, java.time.*, service.*, dto.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 	<%	
 		String getParamYear = request.getParameter("year");
 		String getParamMonth = request.getParameter("month");
-		String getParamDate = request.getParameter("date");
+		String getParamDate = "1";
 		LocalDate now = LocalDate.now();
 		
 		int year = getParamYear == null ? now.getYear() : Integer.parseInt(getParamYear);
@@ -31,7 +31,7 @@
 		int nextMonth = month + 1;
 		int yearOfPrevMonth = year;
 		int yearOfNextMonth = year;
-		System.out.println("\nyear = " + year + ", month = " + month);
+		ReservationService service = new ReservationService();
 
 		if (prevMonth == 0) {
 			prevMonth = 12;
@@ -50,7 +50,8 @@
 		
 		int cnt = 0;
 		String[] dayArray = {"일","월","화","수","목","금","토"};
-		
+		String[] roomArray = {"VIP룸", "일반룸", "합리룸"};
+		List<ReservationDTO> resvInformList = service.getReservInformListByMonth(month);
 	%>
 </head>
 <body>
@@ -82,28 +83,56 @@
 			</div>
 			<div class="dayContainer">
 			<%
+			// i = 1 주일을 의미
 			for(int i = 0; i < weekCount; i++) {
+				// j = 요일을 의미, j == 0 : 일, j == 7 : 토,
 				for(int j = 0; j < 7; j++) {
-					if (calDayList.get(cnt).equals("prevMonth")) {%>			
+					// 해당 month의 달력 페이지에서 이전 달의 날짜인 경우
+					if (calDayList.get(cnt).equals("prevMonth")) {%>
+								
 						<div class="calendarDay horizontalGutter verticalGutter prevMonth"></div>
+					<!-- 해당 month의 달력 페이지에서 다음 달의 날짜인 경우 -->
 			<%		} else if (calDayList.get(cnt).equals("nextMonth")) {%>
+			
 						<div class="calendarDay horizontalGutter verticalGutter nextMonth"></div>
+					<!-- 해당 month의 날짜인 경우 -->
 			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 7) { // 일요일인 경우 %>
+			
 						<div id="day<%=calDayList.get(cnt) %>" class="calendarDay horizontalGutter verticalGutter thisMonth"
 							 onclick="dayClicked('day<%=calDayList.get(cnt) %>')">
 							<div class="sunday bolderFont">
 								<%=calDayList.get(cnt)%>
 							</div>
-							<div class="resv">
-								<div>
-									VIP 룸
-								</div>
-								<div>
-									일반 룸
-								</div>
-								<div>
-									합리 룸
-								</div>
+							<div class="resv">	
+						
+							<!-- 각각의 room -->
+						<%  for(int room = 0; room < roomArray.length; room++) {
+								if (resvInformList.size() > 0) {
+									// 예약 정보 중
+									for(ReservationDTO resvInform : resvInformList) {
+										// 해당 일자에 예약 정보가 있는 경우
+										if (resvInform.getDate().toLocalDate().getDayOfMonth() == Integer.parseInt(calDayList.get(cnt))) {
+											// 해당 room은 출력하지 않고
+											if (resvInform.getRoom() == room) {
+											// 예약 정보가 없는 방만 출력
+											} else { 
+						%>
+												<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%					}
+										} 
+									}
+								} else if (year < now.getYear() 
+										  || (year <= now.getYear() && month < now.getMonthValue())
+										  || (year <= now.getYear() 
+										  	  && month <= now.getMonthValue() 
+										  	  && Integer.parseInt(calDayList.get(cnt)) <= now.getDayOfMonth())) {
+									// 날짜 지난 경우 미출력
+								} else {
+						%>
+									<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%		}
+							} 
+						%>
 							</div>
 						</div>
 			<%		} else if (localDateList.get(cnt).getDayOfWeek().getValue() == 6) { // 토요일인 경우 %>
@@ -113,15 +142,35 @@
 								<%=calDayList.get(cnt)%>
 							</div>
 							<div class="resv">
-								<div>
-									VIP 룸
-								</div>
-								<div>
-									일반 룸
-								</div>
-								<div>
-									합리 룸
-								</div>
+							
+							<!-- 각각의 room -->
+						<%  for(int room = 0; room < roomArray.length; room++) {
+								if (resvInformList.size() > 0) {
+									// 예약 정보 중
+									for(ReservationDTO resvInform : resvInformList) {
+										// 해당 일자에 예약 정보가 있는 경우
+										if (resvInform.getDate().toLocalDate().getDayOfMonth() == Integer.parseInt(calDayList.get(cnt))) {
+											// 해당 room은 출력하지 않고
+											if (resvInform.getRoom() == room) {
+											// 예약 정보가 없는 방만 출력
+											} else { 
+						%>
+												<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%					}
+										} 
+									}
+								} else if (year < now.getYear() 
+										  || (year <= now.getYear() && month < now.getMonthValue())
+										  || (year <= now.getYear() 
+										  	  && month <= now.getMonthValue() 
+										  	  && Integer.parseInt(calDayList.get(cnt)) <= now.getDayOfMonth())) {
+									// 날짜 지난 경우 미출력
+								} else {
+						%>
+									<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%		}
+							} 
+						%>
 							</div>
 						</div>
 			<%	    } else { %>
@@ -131,15 +180,35 @@
 								<%=calDayList.get(cnt)%>
 							</div>
 							<div class="resv">
-								<div>
-									VIP 룸
-								</div>
-								<div>
-									일반 룸
-								</div>
-								<div>
-									합리 룸
-								</div>
+							
+							<!-- 각각의 room -->
+						<%  for(int room = 0; room < roomArray.length; room++) {
+								if (resvInformList.size() > 0) {
+									// 예약 정보 중
+									for(ReservationDTO resvInform : resvInformList) {
+										// 해당 일자에 예약 정보가 있는 경우
+										if (resvInform.getDate().toLocalDate().getDayOfMonth() == Integer.parseInt(calDayList.get(cnt))) {
+											// 해당 room은 출력하지 않고
+											if (resvInform.getRoom() == room) {
+											// 예약 정보가 없는 방만 출력
+											} else { 
+						%>
+												<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%					}
+										} 
+									}
+								} else if (year < now.getYear() 
+										  || (year <= now.getYear() && month < now.getMonthValue())
+										  || (year <= now.getYear() 
+										  	  && month <= now.getMonthValue() 
+										  	  && Integer.parseInt(calDayList.get(cnt)) <= now.getDayOfMonth())) {
+									// 날짜 지난 경우 미출력
+								} else {
+						%>
+									<div><a href="d_02.jsp?y=<%=year%>&m=<%=month%>&d=<%=calDayList.get(cnt)%>&r=<%=room%>"><%=roomArray[room] %></a></div>
+						<%		}
+							} 
+						%>
 							</div>
 						</div>
 			<%		}
@@ -148,18 +217,6 @@
 			}	%>
 			</div>
 		</div>
-		<br>
-		<div id="reservationBoard">
-			<div class="card">
-				<div class="card-header">
-					<h5 class="card-title">VIP 룸</h5>
-				</div>
-				<div class="card-body">
-					뿌잉뿌잉뿌잉
-				</div>
-			</div>
-		</div>
-		<br>
 	</div>
 	<script type="text/javascript" src="js/calendar.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
