@@ -17,10 +17,10 @@
 			border:1px solid black;
 		}
 	</style>
-	<title>JSP 실습 : CRUD 게시판</title>
+	<title>Spring 실습 : CRUD 게시판</title>
 </head>
 <body>
-	<p><h1>&nbsp&nbspJSP 실습 : CRUD 게시판</h1>
+	<p><h1>&nbsp&nbspSpring 실습 : CRUD 게시판</h1>
 	<p>
 	<table width="600px" border="1px" cellspacing="1">
 		<tr class="borderingTD">

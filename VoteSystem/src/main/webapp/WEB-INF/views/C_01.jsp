@@ -65,8 +65,6 @@
 	<span style="margin-left: 35px; font-weight: 700; font-size: 20px;">후보 별 득표율</span><br>
 	<div class="d-flex pl-2">
 		<table>
-		 
-		
 			<c:forEach var="i" begin="0" end="${ huboList.size() - 1 }">
 				<tr class="tableRowBox">
 					<td class="tableRowBox" width="150">

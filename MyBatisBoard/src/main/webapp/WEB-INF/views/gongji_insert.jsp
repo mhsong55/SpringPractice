@@ -43,7 +43,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="취소" OnClick="location.href='/controller/get/list'"></td>
+				<td><input type="button" value="취소" OnClick="location.href='/controller'"></td>
 				<td><input type="submit" value="쓰기"></td>
 			</tr>
 		</table>

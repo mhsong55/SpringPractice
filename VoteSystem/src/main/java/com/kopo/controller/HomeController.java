@@ -37,7 +37,7 @@ public class HomeController {
 		logger.info("Candidate registration");
 		List<HuboDTO> huboList = service.selectAllHubo();
 		int huboListLastIndex = huboList.size() - 1;
-		int nextID = 0;
+		int nextID = 1;
 		if (huboListLastIndex != -1) {
 			nextID = huboList.get(huboListLastIndex).getId() + 1;
 		}
