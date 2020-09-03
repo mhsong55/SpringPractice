@@ -8,15 +8,19 @@ import com.kopo.dto.BoardVO;
 
 public interface BoardService {
 	
+	// Create
+	public String insert(Map<String, String> postDataMap) throws Exception;
+	
+	// Read
 	public BoardVO selectOne(int id) throws Exception;
 	
 	public List<BoardVO> selectAllPost() throws Exception;
 	
-	public String insert(Map<String, String> postDataMap) throws Exception;
-	
 	public BoardVO lastInsertedPost() throws Exception;
 	
-	public int update(HashMap <String, String> postDataMap) throws Exception;
+	// Update
+	public String update(HashMap <String, String> postDataMap) throws Exception;
 	
-	public int delete(int id) throws Exception;
+	// Delete
+	public String delete(int id) throws Exception;
 }

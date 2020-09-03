@@ -15,7 +15,7 @@
 <body>
 	<SCRIPT LANGUAGE="JavaScript">
 		window.alert("${result}");
-		location.href="/controller";
+		location.href="/MyBatisBoard";
 	</SCRIPT>
 </body>
 </html>

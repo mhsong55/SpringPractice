@@ -16,7 +16,7 @@
 <body>
 	<SCRIPT LANGUAGE="JavaScript">
 		window.alert("${resultState}");
-		location.href="/controller/get/record?id=${postId}";
+		location.href="/MyBatisBoard/get/record?id=${postId}";
 	</SCRIPT>
 </body>
 </html>

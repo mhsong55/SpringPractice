@@ -13,7 +13,7 @@
 </head>
 <body>
 	<!--gongji_write.jsp에 Parameter: "key=INSERT, id, title, content" submit-->
-	<form method="post" name="insertForm" action="/controller/post">
+	<form method="post" name="insertForm" action="/MyBatisBoard/post">
 		<table width="650" border="1" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
@@ -43,7 +43,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="취소" OnClick="location.href='/controller'"></td>
+				<td><input type="button" value="취소" OnClick="location.href='/MyBatisBoard'"></td>
 				<td><input type="submit" value="쓰기"></td>
 			</tr>
 		</table>

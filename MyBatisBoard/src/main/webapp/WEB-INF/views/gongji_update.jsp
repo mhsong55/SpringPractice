@@ -53,7 +53,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="취소" OnClick="location.href='/controller/get/record?id=${post.id}'"></td>
+				<td><input type="button" value="취소" OnClick="location.href='/MyBatisBoard/get/record?id=${post.id}'"></td>
 				<td><input type="button" value="쓰기" OnClick="submitForm('WRITE')"></td>
 				<td><input type="button" value="삭제" OnClick="submitForm('DELETE')"></td>
 			</tr>

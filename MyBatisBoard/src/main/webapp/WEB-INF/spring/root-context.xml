@@ -18,7 +18,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="url"
-			value="jdbc:log4jdbc:mysql://localhost:3306/koposw26?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
+			value="jdbc:log4jdbc:mysql://34.64.246.18:3306/koposw26?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="qortjf90"></property>
 	</bean>

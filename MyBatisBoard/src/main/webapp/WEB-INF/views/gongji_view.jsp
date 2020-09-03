@@ -13,7 +13,7 @@
 		  crossorigin="anonymous">
 </head>
 <body>
-	<form method="GET" name="viewForm" action="/controller/put/record">
+	<form method="GET" name="viewForm" action="/MyBatisBoard/put/record">
 		<table width="650px" border="1px" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
@@ -35,7 +35,7 @@
 		<table width="650">
 			<tr>
 				<td width="600"></td>
-				<td><input type="button" value="목록" OnClick="location.href='/controller'"></td>
+				<td><input type="button" value="목록" OnClick="location.href='/MyBatisBoard'"></td>
 				<!--gongji_update.jsp에 parameter: "id = postId" submit-->
 				<td><input type="submit" value="수정"></td>
 		</table>
