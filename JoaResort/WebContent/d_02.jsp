@@ -57,7 +57,56 @@
 							</div>
 						</div>
 						<div class="row">
-						
+							<div class="col-md-6 col-xs-6">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="subscriberName">예약자 명</label>
+									</div>
+									<input type="text" id="subscriberName" class="form-control" required>
+								</div>
+							</div>
+							<div class='col-md-6 col-xs-6'>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="roomType">예약방</label>
+									</div>
+									<select class="custom-select" id="roomType">
+										<option selected>방 종류</option>
+										<option value="0">VIP 룸</option>
+										<option value="1">일반 룸</option>
+										<option value="2">합리적인 룸</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<p>
+						<div class="row">
+							<div class='col-md-3 col-xs-3'>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="phone1">전화번호</label>
+									</div>
+									<select class="custom-select" id="phone1">
+										<option selected></option>
+										<option value="010">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+									</select>
+								</div>
+							</div>
+							-
+							<div class="col-md-2 col-xs-2">
+								<div class="input-group">
+									<input type="tel" id="phone2" class="form-control" required>
+								</div>
+							</div>
+							-
+							<div class="col-md-2 col-xs-2">
+								<div class="input-group">
+									<input type="tel" id="phone3" class="form-control" required>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -93,6 +142,16 @@
     			
    			});
    		});
+    	$('#phone2').keypress(function (event) {
+    		if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
+    			event.preventDefault();
+    		}
+    	});
+    	$('#phone3').keypress(function (event) {
+    		if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
+    			event.preventDefault();
+    		}
+    	});
     </script>
 </body>
 </html>
