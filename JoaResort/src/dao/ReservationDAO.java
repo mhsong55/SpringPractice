@@ -25,7 +25,7 @@ public class ReservationDAO {
 	
 	// database (MySQL)과 연동시켜 관련 정보를 static Connection instance에 저장
 	public void dbConnect() {
-		final String id = "root";
+		final String id = "admin";
 		final String password = "qortjf90";
 		final String accessURL = "jdbc:mysql://34.64.246.18:3306/"
 				+ "?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul"

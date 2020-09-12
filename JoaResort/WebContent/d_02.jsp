@@ -28,88 +28,115 @@
 				</div>
 				<div class="card-body">
 					<div class="container">
-						<div class="row">
-							<div class='col-md-6 col-xs-6'>
-								<div class="form-group">
-									<div class="input-group date" id="checkIn" data-target-input="nearest">
+						<form method="post" name="resvForm" action="#">
+							<div class="row">
+								<div class='col-md-6 col-xs-6'>
+									<div class="form-group">
+										<div class="input-group date" id="checkIn" data-target-input="nearest">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Check-In</span>
+											</div>
+											<input type="text" id="checkInValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkIn" value="<%=LocalDate.now()%>">
+											<div class="input-group-append" data-target="#checkIn" data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class='col-md-6 col-xs-6'>
+									<div class="form-group">
+										<div class="input-group date" id="checkOut" data-target-input="nearest">
+											<div class="input-group-prepend">
+												<span class="input-group-text">Check-Out</span>
+											</div>
+											<input type="text" id="checkOutValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkOut" value="<%=LocalDate.now()%>">
+											<div class="input-group-append" data-target="#checkOut" data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-xs-6">
+									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text">Check-In</span>
+											<label class="input-group-text" for="subscriberName">예약자 명</label>
 										</div>
-										<input type="text" id="checkInValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkIn" value="<%=LocalDate.now()%>">
-										<div class="input-group-append" data-target="#checkIn" data-toggle="datetimepicker">
-											<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-										</div>
+										<input type="text" id="subscriberName" class="form-control" required>
 									</div>
 								</div>
-							</div>
-							<div class='col-md-6 col-xs-6'>
-								<div class="form-group">
-									<div class="input-group date" id="checkOut" data-target-input="nearest">
+								<div class='col-md-6 col-xs-6'>
+									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text">Check-Out</span>
+											<label class="input-group-text" for="roomType">예약방</label>
 										</div>
-										<input type="text" id="checkOutValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkOut" value="<%=LocalDate.now()%>">
-										<div class="input-group-append" data-target="#checkOut" data-toggle="datetimepicker">
-											<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+										<select class="custom-select" id="roomType">
+											<option selected>방 종류</option>
+											<option value="0">VIP 룸</option>
+											<option value="1">일반 룸</option>
+											<option value="2">합리적인 룸</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<p>
+							<div class="row">
+								<div class='col-md-3 col-xs-3'>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="phone1">전화번호</label>
 										</div>
+										<select class="custom-select" id="phone1">
+											<option selected></option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+										</select>
+									</div>
+								</div>
+								-
+								<div class="col-md-2 col-xs-2">
+									<div class="input-group">
+										<input type="tel" id="phone2" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
+									</div>
+								</div>
+								-
+								<div class="col-md-2 col-xs-2">
+									<div class="input-group">
+										<input type="tel" id="phone3" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<label class="input-group-text" for="subscriberName">예약자 명</label>
+							<p>
+							<div class="row">
+								<div class="col-md-4 col-xs-4">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="payerName">입금자 명</label>
+										</div>
+										<input type="text" id="payerName" class="form-control" required>
 									</div>
-									<input type="text" id="subscriberName" class="form-control" required>
 								</div>
-							</div>
-							<div class='col-md-6 col-xs-6'>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<label class="input-group-text" for="roomType">예약방</label>
+								<div class='col-md-8 col-xs-8'>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="comment">남기실 말씀</label>
+										</div>
+										<input type="text" id="commment" class="form-control" required>
 									</div>
-									<select class="custom-select" id="roomType">
-										<option selected>방 종류</option>
-										<option value="0">VIP 룸</option>
-										<option value="1">일반 룸</option>
-										<option value="2">합리적인 룸</option>
-									</select>
 								</div>
 							</div>
-						</div>
-						<p>
-						<div class="row">
-							<div class='col-md-3 col-xs-3'>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<label class="input-group-text" for="phone1">전화번호</label>
-									</div>
-									<select class="custom-select" id="phone1">
-										<option selected></option>
-										<option value="010">010</option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-									</select>
-								</div>
+							<p>
+							<div class="submitButton-div">
+								<input class="btn btn-success" type="submit" valpue="전송">
 							</div>
-							-
-							<div class="col-md-2 col-xs-2">
-								<div class="input-group">
-									<input type="tel" id="phone2" class="form-control" required>
-								</div>
-							</div>
-							-
-							<div class="col-md-2 col-xs-2">
-								<div class="input-group">
-									<input type="tel" id="phone3" class="form-control" required>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+						</form>
+						
+					</div> <!-- container div end -->
+					
+				</div> <!-- card-body div end -->
 			</div>
 		</div>
 	</div>
@@ -119,6 +146,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
     <script type="text/javascript" src="js/ko.js"></script>
+    <script type="text/javascript" src="js/d_02.js"></script>
     <script>
     	$(function () {
     		$('#checkIn').datetimepicker({
