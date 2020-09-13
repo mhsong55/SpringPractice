@@ -16,6 +16,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+	<%
+		String getYear = request.getParameter("y");
+		String getMonth = request.getParameter("m");
+		String getDay = request.getParameter("d");
+		String getRoomType = request.getParameter("r");
+		LocalDate resvDate = LocalDate.now().plusDays(1);
+		int year = resvDate.getYear();
+		int month = resvDate.getMonthValue();
+		int day = resvDate.getDayOfMonth();
+		
+		if (getYear != null && getMonth != null && getDay != null) {
+			year = Integer.parseInt(getYear);
+			month = Integer.parseInt(getMonth);
+			day = Integer.parseInt(getDay);
+			resvDate = LocalDate.of(year, month, day);
+		}
+		int roomType = getRoomType != null ? Integer.parseInt(getRoomType) : 0;
+	%>
 </head>
 <body>
 	<jsp:include page="top.jsp" flush="false" />
@@ -28,7 +46,7 @@
 				</div>
 				<div class="card-body">
 					<div class="container">
-						<form method="post" name="resvForm" action="#">
+						<form method="post" name="resvForm" action="d_02_write.jsp">
 							<div class="row">
 								<div class='col-md-6 col-xs-6'>
 									<div class="form-group">
@@ -36,7 +54,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Check-In</span>
 											</div>
-											<input type="text" id="checkInValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkIn" value="<%=LocalDate.now()%>">
+											<input type="text" id="checkInValue" name="checkInValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkIn" value="<%=resvDate%>">
 											<div class="input-group-append" data-target="#checkIn" data-toggle="datetimepicker">
 												<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 											</div>
@@ -49,7 +67,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Check-Out</span>
 											</div>
-											<input type="text" id="checkOutValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkOut" value="<%=LocalDate.now()%>">
+											<input type="text" id="checkOutValue" name="checkOutValue" class="form-control dateTimePicker datetimepicker-input" data-target="#checkOut">
 											<div class="input-group-append" data-target="#checkOut" data-toggle="datetimepicker">
 												<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 											</div>
@@ -63,7 +81,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="subscriberName">예약자 명</label>
 										</div>
-										<input type="text" id="subscriberName" class="form-control" required>
+										<input type="text" id="subscriberName" name="subscriberName" class="form-control" required>
 									</div>
 								</div>
 								<div class='col-md-6 col-xs-6'>
@@ -71,7 +89,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="roomType">예약방</label>
 										</div>
-										<select class="custom-select" id="roomType">
+										<select class="custom-select" id="roomType" name="roomType">
 											<option selected>방 종류</option>
 											<option value="0">VIP 룸</option>
 											<option value="1">일반 룸</option>
@@ -87,7 +105,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="phone1">전화번호</label>
 										</div>
-										<select class="custom-select" id="phone1">
+										<select class="custom-select" id="phone1" name="phone1">
 											<option selected></option>
 											<option value="010">010</option>
 											<option value="011">011</option>
@@ -99,13 +117,24 @@
 								-
 								<div class="col-md-2 col-xs-2">
 									<div class="input-group">
-										<input type="tel" id="phone2" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
+										<input type="tel" id="phone2" name="phone2" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
 									</div>
 								</div>
 								-
 								<div class="col-md-2 col-xs-2">
 									<div class="input-group">
-										<input type="tel" id="phone3" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
+										<input type="tel" id="phone3" name="phone3" class="form-control" maxlength="4" size="4" required onkeydown="return numberCheck(event);">
+									</div>
+								</div>
+							</div>
+							<p>
+							<div class="row">
+								<div class="col-md-12 col-xs-124">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="address">주소</label>
+										</div>
+										<input type="text" id="payerName" name="address" class="form-control" required>
 									</div>
 								</div>
 							</div>
@@ -116,7 +145,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="payerName">입금자 명</label>
 										</div>
-										<input type="text" id="payerName" class="form-control" required>
+										<input type="text" id="payerName" name="payerName" class="form-control" required>
 									</div>
 								</div>
 								<div class='col-md-8 col-xs-8'>
@@ -124,13 +153,13 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text" for="comment">남기실 말씀</label>
 										</div>
-										<input type="text" id="commment" class="form-control" required>
+										<input type="text" id="commment" name="comment" class="form-control">
 									</div>
 								</div>
 							</div>
 							<p>
 							<div class="submitButton-div">
-								<input class="btn btn-success" type="submit" valpue="전송">
+								<input class="btn btn-success" type="submit" value="전송">
 							</div>
 						</form>
 						
@@ -152,34 +181,26 @@
     		$('#checkIn').datetimepicker({
     			locale: 'ko',
     			format: 'L',
-    			minDate: moment().add(1, 'days'),
-
+    			minDate: moment().add(1, 'days')
     		});
     		$('#checkOut').datetimepicker({
     			locale: 'ko',
     			format: 'L',
     			useCurrent: false,
-    			minDate: moment().add(2, 'days'),
-    			showClear: true
+    			minDate: moment().add(1, 'days'),
     		});
     		$("#checkIn").on("change.datetimepicker", function (e) {
-    			$('#checkOut').datetimepicker('minDate', moment(e.date).add(1, 'days'));
+    			$('#checkOut').datetimepicker('minDate', moment(e.date));
     		});
     		$("#checkOut").on("change.datetimepicker", function (e) {
     			$('#checkIn').datetimepicker('maxDate', moment(e.date).subtract(1, 'days'));
-    			
    			});
+    		// d_01.jsp에서 받아온 날짜 값을 초기값으로 지정
+    		$('#checkInValue').val('<%=year%>.<%=month%>.<%=day%>');
    		});
-    	$('#phone2').keypress(function (event) {
-    		if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
-    			event.preventDefault();
-    		}
-    	});
-    	$('#phone3').keypress(function (event) {
-    		if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
-    			event.preventDefault();
-    		}
-    	});
+    	
+    	// d_01.jsp에서 받아온 룸타입 값을 초기값으로 지정
+    	$('#roomType').val('<%=roomType%>').prop("selected", true);
     </script>
 </body>
 </html>

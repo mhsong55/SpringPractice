@@ -5,6 +5,7 @@ import dto.*;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.sql.Date;
 
 public class ReservationService {
 	
@@ -50,5 +51,18 @@ public class ReservationService {
 			}
 		}		
 		return "";
+	}
+	
+	public ReservationDTO[] dtoArraySet(ReservationDTO dto, int period) {
+		ReservationDTO[] resvArray = new ReservationDTO[period];
+		resvArray[0] = dto;
+		LocalDate date;
+		for(int i = 1; i < period; i++) {
+			date = dto.getDate().toLocalDate().plusDays(1);
+			dto.setDate(Date.valueOf(date));
+			resvArray[i] = dto;
+		}
+		
+		return resvArray;
 	}
 }

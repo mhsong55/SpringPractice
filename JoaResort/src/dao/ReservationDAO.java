@@ -114,4 +114,44 @@ public class ReservationDAO {
 		}
 		return resvInformList;
 	}
+	
+	public int insert(ReservationDTO dto) {
+		dbConnect();
+		Statement statement;
+		StringBuilder sb = new StringBuilder();
+		sb.append("insert into reservation values (")
+		  .append(dto.getName()).append(", ")
+		  .append(dto.getDate()).append(", ")
+		  .append(dto.getRoom()).append(", ")
+		  .append(dto.getAddr()).append(", ")
+		  .append(dto.getPhone()).append(", ")
+		  .append(dto.getPayer()).append(", ")
+		  .append(dto.getComment()).append(", ")
+		  .append(dto.getWriteDate()).append(", ")
+		  .append(dto.getProcessing()).append(");");
+		String query = sb.toString();
+		int result = 0;
+		try {
+			if(connection != null) {
+
+				statement = connection.createStatement();
+				
+				/* executeQuery: SELECT문만 실행 가능
+				 * return: ResultSet object */
+				result = statement.executeUpdate(query);
+				
+				
+				// object closing part
+				statement.close();
+				
+				connection.close();
+			} else {
+				System.out.println("Connection isNull");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return result;
+	}
 }
